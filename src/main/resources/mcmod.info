@@ -1,6 +1,7 @@
 [
 {
-"modid":"tierchips",
-"name":"Tier Chips"
+"modid": "tierChips",
+"name": "Tier Chips",
+"logoFile": "assets/tierchip/textures/Logo.png"
 }
 ]

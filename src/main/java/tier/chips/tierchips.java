@@ -19,11 +19,13 @@ import tier.chips.proxy.ClientProxy;
 @Mod(modid = tierchips.MODID, name = tierchips.NAME, version = tierchips.VERSION)
 public class tierchips
 {
-    public static final String MODID = "Tear Chips";
+    public static final String MODID = "tearChips";
     public static final String NAME = "Tear Chips";
     public static final String VERSION = "1.0.0";
+
     @SidedProxy(clientSide = "tier.chips.proxy.ClientProxy", serverSide = "tier.chips.proxy.CommonProxy")
     public static CommonProxy proxy;
+
     public static Item tier1chip;
     public static Item tier2chip;
     public static Item tier3chip;
