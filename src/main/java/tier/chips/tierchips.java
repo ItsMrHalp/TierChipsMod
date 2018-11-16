@@ -1,5 +1,6 @@
 package tier.chips;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -8,7 +9,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import ic2.api.item.IC2Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import tier.chips.Items.*;
 import tier.chips.proxy.CommonProxy;
 
@@ -31,10 +34,10 @@ public class tierchips
     public void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
-        tier1chip = new Tier1chip().setUnlocalizedName("tier1Chip");
-        tier2chip = new Tier2chip().setUnlocalizedName("tier2Chip");
-        tier3chip = new Tier3chip().setUnlocalizedName("tier3Chip");
-        tier4chip = new Tier4chip().setUnlocalizedName("tier4Chip");
+        tier1chip = new Tierchip().setUnlocalizedName("tier1Chip").setTextureName("tierchip:Tir1");;
+        tier2chip = new Tierchip().setUnlocalizedName("tier2Chip").setTextureName("tierchip:Tir2");;
+        tier3chip = new Tierchip().setUnlocalizedName("tier3Chip").setTextureName("tierchip:Tir3");;
+        tier4chip = new Tierchip().setUnlocalizedName("tier4Chip").setTextureName("tierchip:Tir4");;
         solderingtool = new soldertool().setUnlocalizedName("solderingtool");
         GameRegistry.registerItem(tier1chip, "tier1chip");
         GameRegistry.registerItem(tier2chip, "tier2chip");

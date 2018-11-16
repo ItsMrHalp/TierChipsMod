@@ -679,5 +679,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="CodeChickenCore-1.7.10-1.0.7.47-dev" level="project" />
   </component>
 </module>

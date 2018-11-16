@@ -181,6 +181,19 @@
     <mapping directory="" vcs="Git" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
+  <component name="libraryTable">
+    <library name="CodeChickenCore-1.7.10-1.0.7.47-dev">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/mods/industrialcraft-2-2.2.828-experimental-api.jar!/" />
+        <root url="jar://$PROJECT_DIR$/mods/industrialcraft-2-2.2.828-experimental-dev.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/mods/industrialcraft-2-2.2.828-experimental-api.jar!/" />
+        <root url="jar://$PROJECT_DIR$/mods/industrialcraft-2-2.2.828-experimental-dev.jar!/" />
+      </SOURCES>
+    </library>
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
