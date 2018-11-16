@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import tier.chips.Items.*;
 import tier.chips.proxy.CommonProxy;
 
-@Mod(modid = tierchips.MODID, name = tierchips.NAME, version = tierchips.VERSION)
+@Mod(modid = tierchips.MODID, name = tierchips.NAME, version = tierchips.VERSION, dependencies = "required-after:IC2;")
 public class tierchips
 {
     public static final String MODID = "tierChips";
