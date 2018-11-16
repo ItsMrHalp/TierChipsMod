@@ -9,5 +9,6 @@ public class soldertool extends Item {
     {
         this.setCreativeTab(CreativeTabs.tabMaterials);
         this.setTextureName("tierchip:soldertool");
+        this.setMaxStackSize(1);
     }
 }
