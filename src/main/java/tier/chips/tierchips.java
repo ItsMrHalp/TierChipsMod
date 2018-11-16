@@ -57,6 +57,30 @@ public class tierchips
     public void postInit(FMLPostInitializationEvent event)
     {
         proxy.postInit(event);
+        
+        {
+        proxy.postInit(event);
 
+        if (Loader.isModLoaded("IC2")) {
+
+            try {
+
+                //Tier 1 Chip Recipe addition
+                GameRegistry.addRecipe(new ItemStack(tier1chip, 1),
+                        "###",
+                        "XYX",
+                        "###",
+                        ('X'), IC2Items.getItem("bronzeBlock"), ('#'), IC2Items.getItem("bronzeBlock"), ('Y'), IC2Items.getItem("bronzeBlock"));
+
+            } catch (Exception e){
+
+                System.out.println("Error during initialization IC2 compatible recipes");
+
+                e.printStackTrace(System.err);
+
+            }
+        } else System.out.println("It's seems that there is no IC2 mod available. Ignoring IC2 recipes");
+    
+        
     }
 }
