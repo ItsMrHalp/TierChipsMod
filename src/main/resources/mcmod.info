@@ -1,7 +1,16 @@
 [
 {
-"modid": "tierChips",
-"name": "Tier Chips",
-"logoFile": "assets/tierchip/textures/Logo.png"
+  "modid": "tierChips",
+  "name": "Tier Chips",
+  "description": "A small mod that combines everything.",
+  "version": "1.0.0",
+  "mcversion": "1.7.10",
+  "url": "http://starshine-project.ru/",
+  "updateUrl": "",
+  "authorList": ["MrHalp, Skyline"],
+  "credits": "",
+  "logoFile": "assets/tierchip/textures/Logo.png",
+  "screenshots": [],
+  "dependencies": []
 }
 ]
