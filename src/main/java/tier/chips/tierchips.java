@@ -57,9 +57,6 @@ public class tierchips
     public void postInit(FMLPostInitializationEvent event)
     {
         proxy.postInit(event);
-        
-        {
-        proxy.postInit(event);
 
         if (Loader.isModLoaded("IC2")) {
 
