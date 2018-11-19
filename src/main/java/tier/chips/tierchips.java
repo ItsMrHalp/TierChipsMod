@@ -10,6 +10,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import ic2.api.item.IC2Items;
+import ic2.api.recipe.RecipeInputItemStack;
+import ic2.api.recipe.Recipes;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tier.chips.Item.*;
@@ -30,21 +34,28 @@ public class tierchips
     public static Item tier2chip;
     public static Item tier3chip;
     public static Item tier4chip;
+    public static Item tier3IC2;
     public static Item solderingtool;
+    public static Item redtstonePlate;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
-        tier1chip = new Tierchip().setUnlocalizedName("tier1Chip").setTextureName("tierchip:Tir1");;
-        tier2chip = new Tierchip().setUnlocalizedName("tier2Chip").setTextureName("tierchip:Tir2");;
-        tier3chip = new Tierchip().setUnlocalizedName("tier3Chip").setTextureName("tierchip:Tir3");;
-        tier4chip = new Tierchip().setUnlocalizedName("tier4Chip").setTextureName("tierchip:Tir4");;
+        tier1chip = new Tierchip().setUnlocalizedName("tier1Chip").setTextureName("tierchip:Tir1");
+        tier2chip = new Tierchip().setUnlocalizedName("tier2Chip").setTextureName("tierchip:Tir2");
+        tier3chip = new Tierchip().setUnlocalizedName("tier3Chip").setTextureName("tierchip:Tir3");
+        tier4chip = new Tierchip().setUnlocalizedName("tier4Chip").setTextureName("tierchip:Tir4");
+        tier3IC2 = new IC2chip().setUnlocalizedName("tier3IC2").setTextureName("tierchip:Tier3IC2");
         solderingtool = new ItemSolderingIron().setUnlocalizedName("solderingtool");
+        redtstonePlate = new Item().setUnlocalizedName("PlateRedstone").setTextureName("tierchip:redstonePlate").setCreativeTab(CreativeTabs.tabMaterials);
         GameRegistry.registerItem(tier1chip, "tier1chip");
         GameRegistry.registerItem(tier2chip, "tier2chip");
         GameRegistry.registerItem(tier3chip, "tier3chip");
         GameRegistry.registerItem(tier4chip, "tier4chip");
-        GameRegistry.registerItem(solderingtool, "solderingtool");
+        GameRegistry.registerItem(tier3IC2, "tier3IC2");
+        GameRegistry.registerItem(redtstonePlate, "restonePlate");
+
     }
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -54,7 +65,6 @@ public class tierchips
         LanguageRegistry.addName(tier2chip, "Tier 2 Chip");
         LanguageRegistry.addName(tier3chip, "Tier 3 Chip");
         LanguageRegistry.addName(tier4chip, "Tier 4 Chip");
-        LanguageRegistry.addName(solderingtool, "Soldering Tool");
 
     }
     @EventHandler
@@ -72,6 +82,10 @@ public class tierchips
                         "XYX",
                         "###",
                         ('X'), IC2Items.getItem("bronzeBlock"), ('#'), IC2Items.getItem("bronzeBlock"), ('Y'), IC2Items.getItem("bronzeBlock"));
+                GameRegistry.registerItem(solderingtool, "solderingtool");
+                LanguageRegistry.addName(solderingtool, "Soldering Tool");
+
+                Recipes.compressor.addRecipe(new RecipeInputItemStack(new ItemStack(Items.redstone), 9), null, new ItemStack(redtstonePlate));
 
             } catch (Exception e){
 

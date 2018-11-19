@@ -72,12 +72,12 @@ public class ItemSolderingIron extends ItemTool implements IElectricItem {
         return 0;
     }
 
-//    @Override
-//    @SideOnly(Side.CLIENT)
-//    public void registerIcons(IIconRegister par1IconRegister)
-//    {
-//        this.itemIcon = par1IconRegister.registerIcon("gravisuite:itemRelocator");
-//    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister)
+    {
+        this.itemIcon = par1IconRegister.registerIcon("tierchip:soldertool");
+    }
 }
 
 //public class ItemBattery
