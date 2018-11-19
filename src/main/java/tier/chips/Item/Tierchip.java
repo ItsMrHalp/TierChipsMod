@@ -1,4 +1,4 @@
-package tier.chips.Items;
+package tier.chips.Item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

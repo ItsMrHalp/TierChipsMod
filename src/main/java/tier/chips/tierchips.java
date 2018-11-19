@@ -12,7 +12,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import ic2.api.item.IC2Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import tier.chips.Items.*;
+import tier.chips.Item.*;
+import tier.chips.Item.tool.ItemSolderingIron;
 import tier.chips.proxy.CommonProxy;
 
 @Mod(modid = tierchips.MODID, name = tierchips.NAME, version = tierchips.VERSION, dependencies = "required-after:IC2;")
@@ -38,7 +39,7 @@ public class tierchips
         tier2chip = new Tierchip().setUnlocalizedName("tier2Chip").setTextureName("tierchip:Tir2");;
         tier3chip = new Tierchip().setUnlocalizedName("tier3Chip").setTextureName("tierchip:Tir3");;
         tier4chip = new Tierchip().setUnlocalizedName("tier4Chip").setTextureName("tierchip:Tir4");;
-        solderingtool = new soldertool().setUnlocalizedName("solderingtool");
+        solderingtool = new ItemSolderingIron().setUnlocalizedName("solderingtool");
         GameRegistry.registerItem(tier1chip, "tier1chip");
         GameRegistry.registerItem(tier2chip, "tier2chip");
         GameRegistry.registerItem(tier3chip, "tier3chip");
