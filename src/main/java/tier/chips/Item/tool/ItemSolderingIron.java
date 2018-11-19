@@ -24,6 +24,7 @@ public class ItemSolderingIron extends ItemTool implements IElectricItem {
         this.setMaxStackSize(1);
     }
 
+    //dsadassdadaasd
     public boolean canProvideEnergy(ItemStack itemStack)
     {
         return false;
