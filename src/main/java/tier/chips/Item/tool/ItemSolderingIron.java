@@ -1,83 +1,202 @@
 package tier.chips.Item.tool;
 
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.client.Minecraft;
 import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
-import ic2.core.init.InternalName;
-import ic2.core.item.BaseElectricItem;
+import ic2.api.item.IItemHudInfo;
+import ic2.core.IC2;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import tier.chips.Item.Tierchip;
 
-public class ItemSolderingIron extends ItemTool implements IElectricItem {
+import java.util.LinkedList;
+import java.util.List;
+
+public class ItemSolderingIron extends ItemSword implements IElectricItem /*,IItemHudInfo*/ {
 
     private double maxCharge = 10000;
     private double transferLimit = 32;
     private int tier = 1;
+    protected IIcon[] textures ;
+    public static String Ful = "Empty";
 
     public ItemSolderingIron() {
-        super(1, ToolMaterial.IRON, null);
+        super(ToolMaterial.WOOD);
         this.setCreativeTab(CreativeTabs.tabMaterials);
         this.setTextureName("tierchip:soldertool");
         this.setMaxStackSize(1);
+        this.setMaxDamage(1000);
+        this.setUnlocalizedName("solderingtool");
+
+
     }
 
+
     //dsadassdadaasd
-    public boolean canProvideEnergy(ItemStack itemStack)
-    {
+    public boolean canProvideEnergy(ItemStack itemStack) {
         return false;
     }
 
     @Override
-    public Item getChargedItem(ItemStack itemStack)
-    {
+    public Item getChargedItem(ItemStack itemStack) {
+        setIconDur(itemStack.getItemDamage());
+        return this;
+    }
+
+
+    @Override
+    public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
+        setIconDur(p_77663_1_.getItemDamage());
+    }
+
+    @Override
+    public Item getEmptyItem(ItemStack itemStack) {
         return this;
     }
 
     @Override
-    public Item getEmptyItem(ItemStack itemStack)
-    {
-        return this;
-    }
-
-    @Override
-    public double getMaxCharge(ItemStack itemStack)
-    {
+    public double getMaxCharge(ItemStack itemStack) {
         return this.maxCharge;
     }
 
     @Override
-    public int getTier(ItemStack itemStack)
-    {
+    public int getTier(ItemStack itemStack) {
         return this.tier;
     }
 
     @Override
-    public double getTransferLimit(ItemStack itemStack)
-    {
+    public double getTransferLimit(ItemStack itemStack) {
         return this.transferLimit;
     }
 
     @Override
-    public boolean isRepairable()
-    {
+    public boolean isRepairable() {
         return false;
     }
 
     @Override
-    public int getItemEnchantability()
-    {
+    public int getItemEnchantability() {
         return 0;
+    }
+/*
+    public double getCharge(ItemStack itemStack) {
+        return ElectricItem.manager.discharge(itemStack, 1.0D / 0.0, 2147483647, true, false, true);
+    }*/
+/*
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        //ItemStack SolderTool = new ItemStack(this);
+
+        textures[3] = par1IconRegister.registerIcon("tierchip:.solderingtool.0");
+        //textures[4] = par1IconRegister.registerIcon("tierchip:soldertoolg");
+    }*/
+
+
+
+
+    public String getTextureName(int index) {
+        return index < 3?this.getUnlocalizedName().substring(4) + "." + index:null;
+    }
+
+    public String getTextureFolder() {
+        return null;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister) {
+        int indexCount = 0;
+        this.itemIcon = iconRegister.registerIcon("tierchip:.solderingtool.2");
+
+        while(this.getTextureName(indexCount) != null) {
+            ++indexCount;
+            if(indexCount > 32767) {
+                throw new RuntimeException("More Item Icons than actually possible @ " + this.getUnlocalizedName());
+            }
+        }
+
+        this.textures = new IIcon[indexCount];
+        String textureFolder = this.getTextureFolder() == null?"":this.getTextureFolder() + "/";
+
+        for(int index = 0; index < indexCount; ++index) {
+            this.textures[index] = iconRegister.registerIcon("Tierchip:" + textureFolder + this.getTextureName(index));
+        }
+
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void setIconDur(int durability) {
+        //return meta <= 1?this.textures[0]:(meta > 1?this.textures[2]:this.textures[3 - 3 * (meta - 2) / (this.getMaxDamage() - 4 + 1)]);
+        if(durability>=666)
+            this.itemIcon = this.textures[0];
+        else if((durability<666)&&(durability>333))
+            this.itemIcon = this.textures[1];
+        else
+            this.itemIcon = this.textures[2];
+    }
+
+    /*public static String getFul(ItemSolderingIron itemSolderingiron) {
+        return Ful;
+    }
+    @SideOnly(Side.CLIENT)
+    public static int getDam(ItemStack itemStack) {
+        return itemStack.getItemDamage();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void ITest(ItemStack itm,Item some) {
+        if (ElectricItem.manager.getCharge(itm) >= 1) {
+
+            Ful = "Soldering Tool Full";
+        } else {
+            Ful = "Soldering Tool Not Full";
+        }
     }
 
     @Override
+    public List<String> getHudInfo(ItemStack itemStack) {
+        List<String> info = new LinkedList<String>();
+        info.add("i am a Cool Item");
+        info.add("and have Cool info");
+        return info;
+    }*/
+
+    /*
+
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister)
-    {
-        this.itemIcon = par1IconRegister.registerIcon("tierchip:soldertool");
-    }
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
+        ItemStack itemStack = new ItemStack(this, 1);
+        ItemStack charged;
+        if(this.getChargedItem(itemStack) == this) {
+            charged = new ItemStack(this, 1);
+            ElectricItem.manager.charge(charged, 1.0D / 0.0, 2147483647, true, false);
+            itemList.add(charged);
+            Ful="Full";
+
+        }
+
+        if(this.getEmptyItem(itemStack) == this) {
+            charged = new ItemStack(this, 1);
+            ElectricItem.manager.charge(charged, 0.0D, 2147483647, true, false);
+            itemList.add(charged);
+            Ful="Empty";
+        }
+
+    }*/
+
+
+
+
+
 }
 
 //public class ItemBattery

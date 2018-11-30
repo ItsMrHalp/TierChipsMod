@@ -3,6 +3,11 @@ package tier.chips.proxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.item.ItemStack;
+import tier.chips.Item.tool.ItemSolderingIron;
+
+
 
 public class ClientProxy extends CommonProxy
 {
@@ -22,5 +27,6 @@ public class ClientProxy extends CommonProxy
     public void postInit(FMLPostInitializationEvent event)
     {
         super.postInit(event);
+
     }
 }
